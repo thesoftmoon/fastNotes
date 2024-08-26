@@ -1,0 +1,7 @@
+{
+  "name": "fastNotes",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
