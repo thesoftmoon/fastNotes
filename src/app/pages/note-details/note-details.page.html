@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ note.id ? 'Edit Note' : 'New Note' }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="saveNote()">Save</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="floating">Title</ion-label>
+    <ion-input [(ngModel)]="note.title"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Content</ion-label>
+    <ion-textarea [(ngModel)]="note.content"></ion-textarea>
+  </ion-item>
+
+  <ion-item *ngIf="note.image">
+    <img [src]="note.image" />
+  </ion-item>
+
+  <ion-button expand="block" (click)="takePhoto()">Add Photo</ion-button>
+</ion-content>

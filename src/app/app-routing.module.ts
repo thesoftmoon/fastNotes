@@ -8,12 +8,20 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'notes',
     pathMatch: 'full'
   },
   {
     path: 'notes',
     loadChildren: () => import('./pages/notes/notes.module').then( m => m.NotesPageModule)
+  },
+  {
+    path: 'note-details',
+    loadChildren: () => import('./pages/note-details/note-details.module').then( m => m.NoteDetailsPageModule)
+  },
+  {
+    path: 'note-details/:id',
+    loadChildren: () => import('./pages/note-details/note-details.module').then( m => m.NoteDetailsPageModule)
   },
 ];
 
