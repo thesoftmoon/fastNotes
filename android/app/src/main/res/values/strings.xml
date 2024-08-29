@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">fastNotes</string>
+    <string name="title_activity_main">fastNotes</string>
+    <string name="package_name">com.fastNotes.app</string>
+    <string name="custom_url_scheme">com.fastNotes.app</string>
+</resources>

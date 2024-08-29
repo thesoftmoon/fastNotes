@@ -35,3 +35,62 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,700;1,700&display=swap");
+
+ion-toolbar {
+  --background: #fff;
+  --color: white;
+  --border-color: unset;
+
+  --min-height: 80px;
+  --padding-top: 20px;
+  --padding-bottom: 20px;
+}
+
+ion-grid {
+  --ion-grid-padding: 0px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+p,
+a {
+  font-family: "Lato", system-ui;
+  font-style: normal;
+}
+
+.primary-button {
+  font-family: "Montserrat", system-ui;
+  background-color: #4158d0;
+  background-image: linear-gradient(
+    43deg,
+    #4158d0 0%,
+    #c850c0 46%,
+    #ffcc70 100%
+  );
+
+  padding: 20px 25px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  margin: 20px 10px;
+  display: flex;
+  align-items: center;
+
+  ion-icon {
+    font-size: 24px;
+    margin-right: 10px;
+  }
+}

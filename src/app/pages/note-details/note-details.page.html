@@ -9,12 +9,12 @@
 
 <ion-content>
   <ion-item>
-    <ion-label position="floating">Title</ion-label>
+    <ion-label position="floating">Titulo</ion-label>
     <ion-input [(ngModel)]="note.title"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label position="floating">Content</ion-label>
+    <ion-label position="floating">Contenido</ion-label>
     <ion-textarea [(ngModel)]="note.content"></ion-textarea>
   </ion-item>
 
@@ -22,5 +22,12 @@
     <img [src]="note.image" />
   </ion-item>
 
-  <ion-button expand="block" (click)="takePhoto()">Add Photo</ion-button>
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <button expand="block" (click)="takePhoto()" class="primary-button">
+        <ion-icon name="camera-outline"></ion-icon>
+        Añadir foto
+      </button>
+    </ion-row>
+  </ion-grid>
 </ion-content>

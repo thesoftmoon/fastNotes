@@ -1,13 +1,40 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Notes</ion-title>
+    <ion-img class="navbar-logo" src="assets/fast-notes-logo-v02.png"
+      alt="The Wisconsin State Capitol building in Madison, WI at night"></ion-img>
     <ion-buttons slot="end">
-      <ion-button (click)="addNote()">Add Note</ion-button>
+      <ion-button *ngIf="notes.length >= 1" shape="round" (click)="addNote()">
+        <ion-icon slot="icon-only" name="heart"></ion-icon>
+      </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="notes.length <= 0" scroll-y="false">
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <div class="ion-text-center ion-padding">
+        <h1>
+          Ninguna nota aun
+        </h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur. Dui leo dolor scelerisque eu mi facilisis id. Ac pharetra tortor
+          dignissim
+          sit.
+        </p>
+      </div>
+      <img src="assets/note-3d.jpg" alt="note 3d">
+      <button class="primary-button" (click)="addNote()">
+        <ion-icon name="document-text-outline"></ion-icon>
+        Añadir nota
+      </button>
+    </ion-row>
+  </ion-grid>
+
+
+</ion-content>
+
+<ion-content *ngIf="notes.length >= 1">
   <ion-list>
     <ion-item *ngFor="let note of notes">
       <ion-label>
