@@ -7,14 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { NoteDetailsPageRoutingModule } from './note-details-routing.module';
 
 import { NoteDetailsPage } from './note-details.page';
+import { NavHeaderComponent } from 'src/app/components/nav-header/nav-header.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    NoteDetailsPageRoutingModule
+    NoteDetailsPageRoutingModule,
   ],
-  declarations: [NoteDetailsPage]
+  declarations: [NoteDetailsPage, NavHeaderComponent]
 })
 export class NoteDetailsPageModule {}

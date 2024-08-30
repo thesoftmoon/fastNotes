@@ -1,0 +1,10 @@
+.custom-navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .title {
+    font-weight: 700;
+    font-family: "Montserrat", system-ui;
+  }
+}

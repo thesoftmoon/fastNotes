@@ -31,4 +31,11 @@ export class NotesPage {
     this.noteService.deleteNote(noteId);
     this.notes = this.noteService.getNotes();
   }
+
+  descriptionTrim(description: string) {
+    if (description.length > 20) {
+      return description.slice(0, 20).concat('...');
+    }
+    return description;
+  }
 }

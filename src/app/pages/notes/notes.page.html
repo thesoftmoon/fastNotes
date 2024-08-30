@@ -3,9 +3,9 @@
     <ion-img class="navbar-logo" src="assets/fast-notes-logo-v02.png"
       alt="The Wisconsin State Capitol building in Madison, WI at night"></ion-img>
     <ion-buttons slot="end">
-      <ion-button *ngIf="notes.length >= 1" shape="round" (click)="addNote()">
-        <ion-icon slot="icon-only" name="heart"></ion-icon>
-      </ion-button>
+      <button class="primary-button icon" *ngIf="notes.length >= 1" (click)="addNote()">
+        <ion-icon name="add-circle-outline"></ion-icon>
+      </button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -39,10 +39,14 @@
     <ion-item *ngFor="let note of notes">
       <ion-label>
         <h2>{{ note.title }}</h2>
-        <p>{{ note.content }}</p>
+        <p>{{descriptionTrim(note.content)}}</p>
       </ion-label>
-      <ion-button slot="end" color="danger" (click)="viewNote(note.id)">View</ion-button>
-      <ion-button slot="end" color="danger" (click)="deleteNote(note.id)">Delete {{note.id}}</ion-button>
+      <ion-button slot="end" fill="clear" shape="round" (click)="viewNote(note.id)">
+        <ion-icon name="eye-outline"></ion-icon>
+      </ion-button>
+      <ion-button slot="end" color="danger" fill="clear" shape="round" (click)="deleteNote(note.id)">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
     </ion-item>
   </ion-list>
 </ion-content>

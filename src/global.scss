@@ -40,9 +40,9 @@
 
 ion-toolbar {
   --background: #fff;
-  --color: white;
+  --color: #000;
   --border-color: unset;
-
+  --border-style: unset;
   --min-height: 80px;
   --padding-top: 20px;
   --padding-bottom: 20px;
@@ -92,5 +92,24 @@ a {
   ion-icon {
     font-size: 24px;
     margin-right: 10px;
+  }
+
+  &.small {
+    padding: 5px 10px;
+    font-size: 14px;
+
+    ion-icon {
+      font-size: 18px;
+      margin-right: 5px;
+    }
+  }
+
+  &.icon {
+    padding: 5px;
+
+    ion-icon {
+      font-size: 24px;
+      margin-right: unset;
+    }
   }
 }
