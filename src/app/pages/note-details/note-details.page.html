@@ -1,16 +1,21 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>{{ note.id ? 'Editar nota' : 'Nueva nota' }} {{note.id}}</ion-title>
+    <ion-title>{{ note.id ? 'Editar nota' : 'Nueva nota' }}</ion-title>
     <ion-buttons slot="end">
       <button class="primary-button small" (click)="saveNote()">
         <ion-icon name="save-outline"></ion-icon>
-        Guardar 2
+        Guardar
       </button>
+    </ion-buttons>
+
+    <ion-buttons slot="start">
+      <ion-back-button text={{null}} icon="caret-back" color="dark">
+      </ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<app-nav-header [noteId]="note.id"></app-nav-header>
+<!-- <app-nav-header [noteId]="note.id"></app-nav-header> -->
 
 <ion-content>
 
