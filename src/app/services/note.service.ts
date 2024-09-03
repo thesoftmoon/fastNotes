@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 
 export interface Note {
   id: number;
