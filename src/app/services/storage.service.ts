@@ -20,7 +20,7 @@ export class StorageService {
   //@param key
   //@returns storaged value {string}
   public set(key: string, value: any) {
-    this._storage?.get(key);
+    this._storage?.set(key, value);
   }
 
   //@param key
@@ -38,5 +38,9 @@ export class StorageService {
   // clear all from storage
   public clear() {
     this._storage?.clear();
+  }
+
+  public getAll() {
+    this._storage?.keys();
   }
 }

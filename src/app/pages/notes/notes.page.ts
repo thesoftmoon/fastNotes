@@ -33,9 +33,6 @@ export class NotesPage {
   }
 
   descriptionTrim(description: string) {
-    if (description.length > 20) {
-      return description.slice(0, 20).concat('...');
-    }
-    return description;
+    return description.length > 20 ? description.slice(0, 20).concat('...') : description;
   }
 }
