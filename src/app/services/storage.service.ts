@@ -19,19 +19,19 @@ export class StorageService {
 
   //@param key
   //@returns storaged value {string}
-  public set(key: string, value: any) {
+  public set(key: any, value: any) {
     this._storage?.set(key, value);
   }
 
   //@param key
   //Remove item from storage based on key (name)
-  public get(key: string): Promise<any> | undefined {
+  public get(key: any): Promise<any> | undefined {
     return this._storage?.get(key);
   }
 
   //param key
   //Remove item from storage based on key (name)
-  public remove(key: string) {
+  public remove(key: any) {
     this._storage?.remove(key);
   }
 
@@ -40,7 +40,17 @@ export class StorageService {
     this._storage?.clear();
   }
 
-  public getAll() {
-    this._storage?.keys();
+  public async getAll(): Promise<any[]> {
+    const items: any[] = [];
+
+    if (this._storage) {
+      const keys = await this._storage?.keys();
+
+      for (let key of keys) {
+        const value = await this._storage.get(key);
+        items.push({ key, value });
+      }
+    }
+    return items;
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NoteService, Note } from 'src/app/services/note.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Camera, CameraResultType } from '@capacitor/camera';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-note-details',
@@ -12,7 +13,7 @@ export class NoteDetailsPage implements OnInit {
 
   note: Note = { id: 0, title: '', content: '' };
 
-  constructor(private route: ActivatedRoute, private router: Router, private noteService: NoteService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private noteService: NoteService, private storageService: StorageService) { }
 
   ngOnInit() {
     const noteId = this.route.snapshot.paramMap.get('id');
@@ -25,11 +26,22 @@ export class NoteDetailsPage implements OnInit {
     }
   }
 
+  async getNote(id: string){
+    let note = await this.storageService.get(id);
+    console.log(note);
+  }
+
   saveNote() {
     if (this.note.id) {
       this.noteService.updateNote(this.note);
     } else {
+
       this.noteService.addNote(this.note);
+      this.note.id = new Date().getTime()
+      console.log(this.note.id);
+      this.storageService.set(this.note.id.toString(), this.note)
+
+      this.getNote(this.note.id.toString());
     }
     this.router.navigateByUrl('/notes');
   }
