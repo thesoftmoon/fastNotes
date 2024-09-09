@@ -18,15 +18,7 @@ export class NotesPage {
   ) {}
 
   ionViewWillEnter() {
-    this.storageService.getAll().then((notes) => {
-      notes.forEach((element) => {
-        const exists = this.notes.find((note) => note.id === element.value.id);
-        if (!exists) {
-          this.notes.push(element.value);
-        }
-      });
-      console.log(this.notes);
-    });
+    this.getAllNotes();
   }
 
   addNote() {

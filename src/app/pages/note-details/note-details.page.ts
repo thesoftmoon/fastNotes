@@ -11,6 +11,7 @@ import { StorageService } from 'src/app/services/storage.service';
 })
 export class NoteDetailsPage {
   note: any = {};
+  noteId: string | null = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -20,10 +21,10 @@ export class NoteDetailsPage {
   ) {}
 
   ionViewWillEnter() {
-    const noteId = this.route.snapshot.paramMap.get('id');
-    if (noteId) {
-      console.log(`este es el id: ${noteId}`);
-      this.getNote(noteId);
+    this.noteId = this.route.snapshot.paramMap.get('id');
+    if (this.noteId) {
+      console.log(`este es el id: ${this.noteId}`);
+      this.getNote(this.noteId);
       console.log('charged');
     }
   }
@@ -36,16 +37,15 @@ export class NoteDetailsPage {
   }
 
   saveNote() {
-    if (this.note.id) {
-      this.noteService.updateNote(this.note);
+    if (this.noteId) {
+      console.log('saving');
+      this.storageService.set(this.noteId.toString(), this.note);
+      this.router.navigateByUrl('/notes');
     } else {
-      this.noteService.addNote(this.note);
       this.note.id = new Date().getTime();
-      console.log(this.note.id);
       this.storageService.set(this.note.id.toString(), this.note);
-      this.getNote(this.note.id.toString());
+      this.router.navigateByUrl('/notes');
     }
-    this.router.navigateByUrl('/notes');
   }
 
   async takePhoto() {
