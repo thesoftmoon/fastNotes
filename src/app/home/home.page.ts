@@ -15,7 +15,7 @@ export class HomePage {
 
   async getName() {
     let userName = await this.storageService.get('userName');
-    alert(userName);
+    console.log(userName);
   }
 
   removeName() {

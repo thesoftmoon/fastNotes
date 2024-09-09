@@ -9,38 +9,40 @@ import { StorageService } from 'src/app/services/storage.service';
   templateUrl: './note-details.page.html',
   styleUrls: ['./note-details.page.scss'],
 })
-export class NoteDetailsPage implements OnInit {
+export class NoteDetailsPage {
+  note: any = {};
 
-  note: Note = { id: 0, title: '', content: '' };
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private noteService: NoteService,
+    private storageService: StorageService
+  ) {}
 
-  constructor(private route: ActivatedRoute, private router: Router, private noteService: NoteService, private storageService: StorageService) { }
-
-  ngOnInit() {
+  ionViewWillEnter() {
     const noteId = this.route.snapshot.paramMap.get('id');
-    console.log(noteId)
     if (noteId) {
-      const existingNote = this.noteService.getNoteById(+noteId);
-      if (existingNote) {
-        this.note = { ...existingNote };
-      }
+      console.log(`este es el id: ${noteId}`);
+      this.getNote(noteId);
+      console.log('charged');
     }
   }
 
-  async getNote(id: string){
-    let note = await this.storageService.get(id);
-    console.log(note);
+  async getNote(id: string) {
+    let noteDetail = await this.storageService.get(id);
+    console.log(noteDetail);
+
+    this.note = noteDetail;
   }
 
   saveNote() {
     if (this.note.id) {
       this.noteService.updateNote(this.note);
     } else {
-
       this.noteService.addNote(this.note);
-      this.note.id = new Date().getTime()
+      this.note.id = new Date().getTime();
       console.log(this.note.id);
-      this.storageService.set(this.note.id.toString(), this.note)
-
+      this.storageService.set(this.note.id.toString(), this.note);
       this.getNote(this.note.id.toString());
     }
     this.router.navigateByUrl('/notes');
@@ -50,7 +52,7 @@ export class NoteDetailsPage implements OnInit {
     const image = await Camera.getPhoto({
       quality: 90,
       allowEditing: false,
-      resultType: CameraResultType.Base64
+      resultType: CameraResultType.Base64,
     });
 
     if (image) {

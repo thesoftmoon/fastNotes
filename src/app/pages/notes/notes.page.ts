@@ -35,15 +35,12 @@ export class NotesPage {
   }
 
   viewNote(noteId: number) {
-    console.log('view note');
+    console.log(noteId);
     this.router.navigateByUrl(`/note-details/${noteId}`);
   }
 
   deleteNote(noteId: number) {
     console.log('delete');
-    //this.noteService.deleteNote(noteId);
-    //this.notes = this.noteService.getNotes();
-
     this.storageService.remove(noteId.toString());
 
     this.getAllNotes();
