@@ -38,14 +38,13 @@
   <ion-list>
     <ion-item *ngFor="let note of notes">
       <ion-label>
-        <h2>{{ note.title }}</h2>
+        <h2>{{descriptionTrim(note.title)}}</h2>
         <p>{{descriptionTrim(note.content)}}</p>
       </ion-label>
       <ion-button slot="end" fill="clear" shape="round" (click)="viewNote(note.id)">
         <ion-icon name="eye-outline"></ion-icon>
       </ion-button>
       <ion-button slot="end" color="danger" fill="clear" shape="round" (click)="deleteNote(note.id)">
-        {{note.id}}
         <ion-icon name="trash-outline"></ion-icon>
       </ion-button>
     </ion-item>

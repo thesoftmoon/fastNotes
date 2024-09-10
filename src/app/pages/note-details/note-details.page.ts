@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { NoteService, Note } from 'src/app/services/note.service';
+import { Component, HostListener } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Camera, CameraResultType } from '@capacitor/camera';
 import { StorageService } from 'src/app/services/storage.service';
@@ -12,11 +11,11 @@ import { StorageService } from 'src/app/services/storage.service';
 export class NoteDetailsPage {
   note: any = {};
   noteId: string | null = null;
+  scrollValue: number = 0;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private noteService: NoteService,
     private storageService: StorageService
   ) {}
 
@@ -58,5 +57,12 @@ export class NoteDetailsPage {
     if (image) {
       this.note.image = `data:image/jpeg;base64,${image.base64String}`;
     }
+  }
+
+  onScroll(event: any) {
+    const scrollTop = event.detail.scrollTop;
+    this.scrollValue = scrollTop;
+
+    console.log('scrolleaste' + scrollTop);
   }
 }

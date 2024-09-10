@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { NoteService, Note } from 'src/app/services/note.service';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { StorageService } from 'src/app/services/storage.service';
 
@@ -11,11 +10,7 @@ import { StorageService } from 'src/app/services/storage.service';
 export class NotesPage {
   notes: any[] = [];
 
-  constructor(
-    private noteService: NoteService,
-    private router: Router,
-    private storageService: StorageService
-  ) {}
+  constructor(private router: Router, private storageService: StorageService) {}
 
   ionViewWillEnter() {
     this.getAllNotes();
@@ -32,9 +27,8 @@ export class NotesPage {
   }
 
   deleteNote(noteId: number) {
-    console.log('delete');
     this.storageService.remove(noteId.toString());
-
+    console.log(`Deleted the note with id: ${noteId}`);
     this.getAllNotes();
   }
 

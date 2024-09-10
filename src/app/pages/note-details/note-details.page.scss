@@ -1,0 +1,19 @@
+.item-image {
+  margin-top: -85px;
+  position: relative;
+
+  .overlay {
+    position: absolute;
+    inset: 0;
+  }
+}
+
+ion-toolbar {
+  --background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.679) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  --transition: all 1s linear;
+  --color: #fff;
+}

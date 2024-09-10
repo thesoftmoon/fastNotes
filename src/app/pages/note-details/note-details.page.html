@@ -1,4 +1,4 @@
-<ion-header class="ion-no-border">
+<ion-header class="ion-no-border" >
   <ion-toolbar>
     <ion-title>{{ note.id ? 'Editar nota' : 'Nueva nota' }}</ion-title>
     <ion-buttons slot="end">
@@ -15,8 +15,9 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content [fullscreen]="true" (ionScroll)="onScroll($event)" [scrollEvents]="true">
   <div class="item-image" *ngIf="note.image">
+    <div class="overlay"></div>
     <img [src]="note.image" />
   </div>
 

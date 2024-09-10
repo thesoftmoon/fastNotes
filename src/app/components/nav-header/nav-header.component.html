@@ -1,13 +1,15 @@
 <div class="custom-navbar-container">
 
-  <button class="back-button">
-    <ion-icon name="arrow-back-outline"></ion-icon>
-  </button>
-
-  <div class="title">
-    <p>
-      {{ noteId ? 'Editar nota' : 'Nueva nota' }}
-    </p>
+  <div class="navigation-title">
+    <ion-buttons>
+      <ion-back-button text={{null}} icon="caret-back" color="dark">
+      </ion-back-button>
+    </ion-buttons>
+    <div class="title">
+      <p>
+        {{ noteId ? 'Editar nota' : 'Nueva nota' }}
+      </p>
+    </div>
   </div>
 
   <button class="primary-button small">
