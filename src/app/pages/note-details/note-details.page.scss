@@ -1,19 +1,48 @@
 .item-image {
-  margin-top: -85px;
+  margin-top: -100px;
   position: relative;
 
   .overlay {
     position: absolute;
     inset: 0;
   }
+
+  &.no-image {
+    background-color: #ffb8f8;
+    height: 125px;
+  }
+}
+
+.main-content {
+  border-radius: 25px;
+  overflow: hidden;
+  margin-top: -25px;
 }
 
 ion-toolbar {
   --background: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 0.679) 0%,
+    rgba(0, 0, 0, 0.411) 0%,
     rgba(0, 0, 0, 0) 100%
   );
   --transition: all 1s linear;
   --color: #fff;
+}
+
+ion-modal {
+  --height: fit-content;
+  --width: 90%;
+  --border-radius: 16px;
+  --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+ion-modal::part(backdrop) {
+  background: rgba(209, 213, 219);
+  opacity: 1;
+}
+
+ion-modal ion-toolbar {
+  --background: rgb(14 116 144);
+  --color: white;
 }

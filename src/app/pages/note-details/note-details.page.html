@@ -1,4 +1,4 @@
-<ion-header class="ion-no-border" >
+<ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-title>{{ note.id ? 'Editar nota' : 'Nueva nota' }}</ion-title>
     <ion-buttons slot="end">
@@ -9,35 +9,47 @@
     </ion-buttons>
 
     <ion-buttons slot="start">
-      <ion-back-button text={{null}} icon="caret-back" color="dark">
+      <ion-back-button text={{null}} icon="caret-back" color="light">
       </ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" (ionScroll)="onScroll($event)" [scrollEvents]="true">
-  <div class="item-image" *ngIf="note.image">
-    <div class="overlay"></div>
+  <div class="item-image" (click)="showImage(true)" *ngIf="note.image; else noImage">
+    <!-- <div class="overlay"></div> -->
     <img [src]="note.image" />
+
   </div>
 
-  <ion-item>
-    <ion-label position="floating">Titulo</ion-label>
-    <ion-input [(ngModel)]="note.title"></ion-input>
-  </ion-item>
+  <ion-modal [isOpen]="isModalOpen">
+    <ng-template>
+      <img [src]="note.image" />
+    </ng-template>
+  </ion-modal>
 
-  <ion-item>
-    <ion-label position="floating">Contenido</ion-label>
-    <ion-textarea [autoGrow]="true" [(ngModel)]="note.content"></ion-textarea>
-  </ion-item>
+  <ng-template #noImage>
+    <div class="item-image no-image">
+    </div>
+  </ng-template>
 
+  <div class="main-content">
+    <ion-item>
+      <ion-label position="floating">Titulo</ion-label>
+      <ion-input [(ngModel)]="note.title"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Contenido</ion-label>
+      <ion-textarea [autoGrow]="true" [(ngModel)]="note.content"></ion-textarea>
+    </ion-item>
+    <ion-grid>
+      <ion-row class="ion-justify-content-center">
+        <button expand="block" (click)="takePhoto()" class="primary-button">
+          <ion-icon name="camera-outline"></ion-icon>
+          Añadir foto
+        </button>
+      </ion-row>
+    </ion-grid>
+  </div>
 
-  <ion-grid>
-    <ion-row class="ion-justify-content-center">
-      <button expand="block" (click)="takePhoto()" class="primary-button">
-        <ion-icon name="camera-outline"></ion-icon>
-        Añadir foto
-      </button>
-    </ion-row>
-  </ion-grid>
 </ion-content>

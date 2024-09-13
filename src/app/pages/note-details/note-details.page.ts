@@ -2,6 +2,7 @@ import { Component, HostListener } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Camera, CameraResultType } from '@capacitor/camera';
 import { StorageService } from 'src/app/services/storage.service';
+import { AnimationOptions } from '@angular/animations';
 
 @Component({
   selector: 'app-note-details',
@@ -12,6 +13,7 @@ export class NoteDetailsPage {
   note: any = {};
   noteId: string | null = null;
   scrollValue: number = 0;
+  isModalOpen: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -64,5 +66,14 @@ export class NoteDetailsPage {
     this.scrollValue = scrollTop;
 
     console.log('scrolleaste' + scrollTop);
+  }
+
+  showImage(isOpen: boolean) {
+    if (this.isModalOpen) {
+      this.isModalOpen = false;
+    } else {
+      this.isModalOpen = isOpen;
+    }
+    console.log(this.isModalOpen);
   }
 }
